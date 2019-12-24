@@ -1,0 +1,49 @@
+.App {
+  text-align: center;
+  color:white;
+  
+}
+
+.itemm{
+  font-family: Jura;
+  font-size: 30px;
+  color: white;
+}
+.appl{
+  background: url(https://pixabay.com/get/57e8d74b4254a914f6da8c7dda6d49214b6ac3e4565676487c297fd196/water-1828865_1280.jpg);
+}
+.titre {
+  font-family: Jura ;
+  font-size: 60px;
+  text-align:left; 
+  font-weight:bold;
+  padding-top: 10px ;
+  color: white;
+}
+
+.date {
+  font-family: Jura;
+  font-size: 30px;
+  font-weight: bold;
+  color:rgb(100, 219, 203);
+}
+
+.heure {
+  font-family: Jura;
+  font-weight:bold;
+  color: rgb(3, 240, 122);
+}
+.date2 {
+  font-family: Jura;
+  font-weight: bold;
+  font-size: 20px;
+  color: aquamarine;
+}
+
+.form-group{
+  font-family: Jura;
+  font-weight: bold;
+  font-size: 20px;
+  color:white;
+}
+
