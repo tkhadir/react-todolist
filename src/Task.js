@@ -42,11 +42,13 @@ class Task extends Component {
 
     handleUpdateSubmit = (e, index) => {
         e.preventDefault()
-        if (e.target.value.length !== EMPTY_FIELD) {
-            //this.setState(state => {
-                /*const tasks = state.list.items((item, j) => {
+        console.log('param' + index)
+        if (this.state.description.length !== EMPTY_FIELD) {
+            this.setState((state) => {
+                const tasks = state.items.map((item, j) => {
+                  console.log(index + ' | ' + j)
                   if (j === index) {
-                    item.element = e.target.value
+                    item.element = state.description
                     return item;
                   } else {
                     return item;
@@ -54,10 +56,12 @@ class Task extends Component {
                 });
                 return {
                   tasks,
-                };*/
-            //});
-            console.log('update')
+                };
+            });
         }
+        this.setState({
+            descriptionClassName: 'updateFormHidden'
+        })
     }
 
     onDateChange = (updatedDate) => {
@@ -99,8 +103,8 @@ class Task extends Component {
                             </button>
                             <div>
                                 <span onClick={this.handleDescriptionClick} className="taskDesciption">{item.element}</span>
-                                <form className={this.state.descriptionClassName} onSubmit={() => this.handleUpdateSubmit(index)}>
-                                    <input type="text" name="description"></input>
+                                <form className={this.state.descriptionClassName} onSubmit={(e) => this.handleUpdateSubmit(e, index)}>
+                                    <input type="text" name="description" onChange={this.onChange}></input>
                                     <button>update</button>
                                 </form>
                                 <p>{'scheduled for : ' + formateDate(item.date)}</p>
