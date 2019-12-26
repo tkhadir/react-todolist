@@ -10,7 +10,10 @@
   color: white;
 }
 .appl{
-  background: url(https://pixabay.com/get/57e8d74b4254a914f6da8c7dda6d49214b6ac3e4565676487c297fd196/water-1828865_1280.jpg);
+  background-image: url('./assets/img/andrew-neel-cckf4TsHAuw-unsplash.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
 }
 .titre {
   font-family: Jura ;
