@@ -1,52 +1,18 @@
-.App {
-  text-align: center;
-  color:white;
-  
-}
 
-.itemm{
+.taskItem{
   font-family: Jura;
   font-size: 30px;
-  color: white;
-}
-.appl{
-  background-image: url('./assets/img/andrew-neel-cckf4TsHAuw-unsplash.jpg');
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: center;
-}
-.titre {
-  font-family: Jura ;
-  font-size: 60px;
-  text-align:left; 
-  font-weight:bold;
-  padding-top: 10px ;
-  color: white;
+  color: black;
+  border: 2px solid;
+  border-radius: 30px;
+  display: inline-flex;
+  width: 100%;
 }
 
-.date {
-  font-family: Jura;
-  font-size: 30px;
-  font-weight: bold;
-  color:rgb(100, 219, 203);
-}
-
-.heure {
-  font-family: Jura;
-  font-weight:bold;
-  color: rgb(3, 240, 122);
-}
-.date2 {
-  font-family: Jura;
-  font-weight: bold;
-  font-size: 20px;
-  color: aquamarine;
-}
-
-.form-group{
-  font-family: Jura;
-  font-weight: bold;
-  font-size: 20px;
-  color:white;
+.deleteButton {
+  border-radius: 50%;
+  margin-left: 5%;
+  margin-right: 5%;
+  width: 5%;
 }
 

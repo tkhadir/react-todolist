@@ -1,11 +1,22 @@
 import React, { Component } from 'react';
-import {Row, Col} from 'react-bootstrap';
+import DateTimePicker from 'react-datetime-picker';
 
+const EMPTY_FIELD = 0;
+var isAlreadyExist = function(items, field) {
+    let exists = false;
+    items.forEach(item => {
+        if (item.element === field) {
+            exists = true;
+        }
+    })
+    return exists;
+}
 
 class Task extends Component {
     state={
         element:"",
-        items:[]
+        items:[],
+        date: new Date()
     }
 
     onChange = (e) => {
@@ -14,12 +25,24 @@ class Task extends Component {
         })
     }
 
+    onDateChange = (updatedDate) => {
+        this.setState({
+            date: updatedDate
+        })
+    }
+
     onSubmit = (e) => {
         e.preventDefault();
-        this.setState({
-            element:"",
-            items:[...this.state.items, {element:this.state.element}]
-        })
+        if (this.state.element.length === EMPTY_FIELD) {
+            alert('your text is empty');
+        } else if (isAlreadyExist(this.state.items, this.state.element)) {
+            alert('item already exist');
+        } else {
+            this.setState({
+                element:"",
+                items:[...this.state.items, {element:this.state.element, date:this.state.date}]
+            })
+        }
     }
 
     deleteItem = (index) => {
@@ -32,53 +55,33 @@ class Task extends Component {
     }
 
     renderTask = () =>{
-        return this.state.items.map((item,index) => {
-            return (
-                <div className="card mb-3" key={index}>
-                    <div className="card-body">
-                        <h4 className="itemm">{item.element} {/* = c'est ce qui s'affiche quand on ajoute une chose à faire*/}
-                        <i className="fas fa-times"
-                        style={{cursor:'pointer', float:'right', color:'white'}}
-                        onClick={() => this.deleteItem(index)}>
-                        </i>
-                        </h4>
-                    </div>
-                </div>
-            )
-
-        })
+        return (<ul>{
+            this.state.items.map((item,index) => (
+                    <li key={index} className="taskItem">
+                            <button className="deleteButton"
+                            onClick={() => this.deleteItem(index)}>
+                                X
+                            </button>
+                            <span>{item.element + ' task '}</span>
+                            <span>{' scheduled at : ' + item.date}</span>
+                    </li>
+            ))}
+        </ul>)
     }
 
     render() {
         return (
             <React.Fragment>
             <div>
-                 
-                <Row>
-                    <Col lg={1}>
-                        <div>
-                           
-                            <p style={{textAlign:'center', fontWeight: 'bold', paddingTop: '10px'}}>{this.props.time}
-                            <br/>
-                            <span>{this.props.period}</span>
-                            </p>
-                        </div>
-                    </Col>
-                    <Col lg={10}>
-                        <h4>{this.props.activity_title}</h4>
-                        <p >{this.props.activity_description}</p>
-                    </Col>
-                    
-                </Row>
-
-                <div className="card-body">
+                <div>
                     <form onSubmit={this.onSubmit}>
-                        <div className="form-group">
-                            <label htmlFor="element">Things to do</label>
-                            <input type="text" className="form-control form-control-lg" name="element"
+                            <input type="text" name="element"
                             onChange={this.onChange} value={this.state.element} />
-                        </div>
-                        <button className="btn btn-info btn-block">Add things to do</button>
+                            <DateTimePicker
+                                onChange={this.onDateChange}
+                                value={this.state.date}
+                                />
+                        <button>Add</button>
                     </form>
                 </div>
             </div>
