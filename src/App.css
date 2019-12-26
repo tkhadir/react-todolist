@@ -1,49 +1,46 @@
-.App {
+
+@import 'https://www.w3schools.com/w3css/4/w3.css';
+.taskItem{
+  font-family: Jura;
+  font-size: 30px;
+  color: black;
+  border: 2px solid;
+  border-radius: 10px;
+  display: inline-flex;
+  width: 100%;
+}
+
+.deleteButton {
+  margin-left: 5%;
+  margin-right: 5%;
+  cursor: pointer;
   text-align: center;
-  color:white;
-  
+  text-decoration: none;
+  display: inline-block;
+  background-color: white;
+  color: black;
+  border: 2px solid black;
+  border-radius: 12px;
 }
 
-.itemm{
-  font-family: Jura;
-  font-size: 30px;
-  color: white;
-}
-.appl{
-  background: url(https://pixabay.com/get/57e8d74b4254a914f6da8c7dda6d49214b6ac3e4565676487c297fd196/water-1828865_1280.jpg);
-}
-.titre {
-  font-family: Jura ;
-  font-size: 60px;
-  text-align:left; 
-  font-weight:bold;
-  padding-top: 10px ;
+.deleteButton:hover {
+  background-color: red; /* Green */
   color: white;
 }
 
-.date {
-  font-family: Jura;
-  font-size: 30px;
-  font-weight: bold;
-  color:rgb(100, 219, 203);
+.taskDesciption {
+  margin-right: 5%;
 }
 
-.heure {
-  font-family: Jura;
-  font-weight:bold;
-  color: rgb(3, 240, 122);
-}
-.date2 {
-  font-family: Jura;
-  font-weight: bold;
-  font-size: 20px;
-  color: aquamarine;
+.taskDesciption:hover {
+  background-color: skyblue;
 }
 
-.form-group{
-  font-family: Jura;
-  font-weight: bold;
-  font-size: 20px;
-  color:white;
+.updateFormHidden {
+  visibility: hidden;
+}
+
+.updateFormVisible {
+  visibility: visible;
 }
 

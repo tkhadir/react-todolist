@@ -1,32 +1,17 @@
-import React, {Component} from 'react';
+import React from 'react';
 import Task from './Task.js'
 import Date from './Date.js'
-import Avatar from './Avatar.js'
 
 import './App.css'
 
-
-
-
-
 function App() {
-
-
-    return (
-      <div className="appl" style={{padding: '30px 30px'}}>
-        <Avatar />
-        <br />
+  return (
+      <div style={{padding: '30px 30px', width: '100%'}}>
         <Date />
         <br />
         <Task />
         <br />
-        
-        
       </div>
     );
-  }
-  
-
-
-
+}
 export default App;
