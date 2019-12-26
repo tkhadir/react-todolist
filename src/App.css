@@ -1,18 +1,46 @@
 
+@import 'https://www.w3schools.com/w3css/4/w3.css';
 .taskItem{
   font-family: Jura;
   font-size: 30px;
   color: black;
   border: 2px solid;
-  border-radius: 30px;
+  border-radius: 10px;
   display: inline-flex;
   width: 100%;
 }
 
 .deleteButton {
-  border-radius: 50%;
   margin-left: 5%;
   margin-right: 5%;
-  width: 5%;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  background-color: white;
+  color: black;
+  border: 2px solid black;
+  border-radius: 12px;
+}
+
+.deleteButton:hover {
+  background-color: red; /* Green */
+  color: white;
+}
+
+.taskDesciption {
+  margin-right: 5%;
+}
+
+.taskDesciption:hover {
+  background-color: skyblue;
+}
+
+.updateFormHidden {
+  visibility: hidden;
+}
+
+.updateFormVisible {
+  visibility: visible;
 }
 
