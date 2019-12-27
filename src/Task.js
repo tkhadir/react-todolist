@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import DateTimePicker from 'react-datetime-picker';
 import moment from 'moment';
+import UserProfile from './utils/UserProfile'
 
 
 const EMPTY_FIELD = 0;
@@ -20,8 +21,8 @@ var formateDate = function (date) {
 
 class Task extends Component {
     state={
-        element:"",
-        items:[],
+        element:'',
+        items: UserProfile.getTasks() == null ? [] : JSON.parse(UserProfile.getTasks()).items,
         date: new Date(),
         description: '',
         descriptionClassName: 'updateFormHidden'
@@ -34,7 +35,6 @@ class Task extends Component {
     }
 
     handleDescriptionClick = () => {
-        console.log('click')
         this.setState({
             descriptionClassName: this.state.descriptionClassName === 'updateFormHidden' ? 'updateFormVisible' : 'updateFormHidden'
         })
@@ -42,11 +42,9 @@ class Task extends Component {
 
     handleUpdateSubmit = (e, index) => {
         e.preventDefault()
-        console.log('param' + index)
         if (this.state.description.length !== EMPTY_FIELD) {
             this.setState((state) => {
                 const tasks = state.items.map((item, j) => {
-                  console.log(index + ' | ' + j)
                   if (j === index) {
                     item.element = state.description
                     return item;
@@ -54,6 +52,7 @@ class Task extends Component {
                     return item;
                   }
                 });
+                UserProfile.save(JSON.stringify({items: tasks}))
                 return {
                   tasks,
                 };
@@ -62,6 +61,7 @@ class Task extends Component {
         this.setState({
             descriptionClassName: 'updateFormHidden'
         })
+        
     }
 
     onDateChange = (updatedDate) => {
@@ -77,10 +77,12 @@ class Task extends Component {
         } else if (isAlreadyExist(this.state.items, this.state.element)) {
             alert('item already exist');
         } else {
+            const arr = [...this.state.items, {element:this.state.element, date:this.state.date}]
             this.setState({
                 element:"",
-                items:[...this.state.items, {element:this.state.element, date:this.state.date}]
+                items: arr
             })
+            UserProfile.save(JSON.stringify({items: arr}))
         }
     }
 
@@ -90,7 +92,7 @@ class Task extends Component {
         this.setState({
             items: arr
         })
-        
+        UserProfile.save(JSON.stringify({items: arr}))
     }
 
     renderTask = () =>{
@@ -114,6 +116,8 @@ class Task extends Component {
         </ul>)
     }
 
+
+    
     render() {
         return (
             <React.Fragment>
